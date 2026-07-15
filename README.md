@@ -16,6 +16,8 @@
 
 ## 使用方式
 
+直接将 `.opencode/` 目录和 `opencode.jsonc` 复制到你的 Go 项目根目录即可：
+
 ```bash
 cp -r opencode.jsonc .opencode/ /path/to/your-go-project/
 cd /path/to/your-go-project

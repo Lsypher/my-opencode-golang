@@ -89,3 +89,20 @@ OpenCode TUI 中切换模型（`/models` → 选择模型）**仅影响 primary 
 所有 subagent（planner、explore、code-reviewer 等）不受 TUI 切换影响，始终使用 `opencode.jsonc` 中显式指定的 `model`。
 
 根据实际开发需求和预算，可自行编辑 `opencode.jsonc` 调整每个 agent 使用的模型。例如为 explore 更换其他免费或付费模型，或为特定 agent 指定更高性能的模型。
+
+## 推荐 MCP
+
+以下 MCP 服务器可增强 opencode 能力，可按需安装：
+
+### Context7 — 文档查询
+
+检索最新库和框架的官方文档，避免依赖训练数据的过时信息。
+
+### CodeGraph — 代码知识图谱
+
+将本地代码索引为图结构，帮助 AI 理解跨文件的调用链、类型引用和依赖关系，减少不必要的文件读取。
+
+### agent-browser — 浏览器自动化
+
+控制 Chrome/Edge 浏览器，支持导航、点击、表单填充、截图和页面内容提取，适合 Web 测试和数据抓取。
+

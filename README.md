@@ -4,13 +4,15 @@
 
 基于 [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC) 裁剪改造，仅保留 Go 后端开发所需的 agents、commands 和 skills。
 
+主配置文件 `opencode.json` 位于项目根目录，包含所有 agent、command、instruction 和 permission 定义。`.opencode/` 目录存放命令模板、agent prompt、技能文件和开发指令。
+
 ## 功能
 
 | 类别 | 数量 | 说明 |
 |------|------|------|
-| Agents | 13 | build、planner、architect、code-reviewer、security-reviewer、tdd-guide、go-reviewer 等 |
-| Commands | 14 | /plan、/tdd、/code-review、/go-review、/go-test、/go-build 等 |
-| Skills | 9 | golang-patterns、backend-patterns、api-design、tdd-workflow、security-review 等 |
+| Agents | 13 | build（primary）、planner、architect、code-reviewer、security-reviewer、tdd-guide、go-reviewer 等 |
+| Commands | 14 | /plan、/tdd、/code-review、/go-review、/go-test、/go-build、/verify、/checkpoint 等 |
+| Skills | 9 | golang-patterns、backend-patterns、api-design、tdd-workflow、security-review、git-commit 等 |
 
 ## 使用方式
 
@@ -25,14 +27,22 @@ opencode
 ## 项目结构
 
 ```
-opencode.json              # 根配置
+opencode.json              # 主配置（agents/commands/skills/permissions）
 .opencode/
-├── opencode.json          # 主配置（agents/commands/skills）
 ├── AGENTS.md              # agent 使用说明
 ├── commands/              # 14 个命令模板
 ├── prompts/agents/        # 12 个 agent prompt
 ├── instructions/          # Go 开发指令
 └── skills/                # 9 个精选技能
+    ├── golang-patterns/      # Go 语言惯用模式与最佳实践
+    ├── backend-patterns/     # 后端架构模式与 API 设计
+    ├── api-design/           # REST API 设计规范
+    ├── coding-standards/     # 跨项目编码规范
+    ├── tdd-workflow/         # 测试驱动开发工作流
+    ├── security-review/      # 安全审查清单与模式
+    ├── strategic-compact/    # 上下文压缩策略
+    ├── verification-loop/    # 综合验证流程
+    └── git-commit/           # 规范化 Git 提交
 ```
 
 ## 可用 Agent

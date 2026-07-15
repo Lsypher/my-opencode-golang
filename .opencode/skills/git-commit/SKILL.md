@@ -110,6 +110,7 @@ EOF
 ## Best Practices
 
 - One logical change per commit
+- **使用中文编写 commit message** — description、body、footer 均使用中文
 - Present tense: "add" not "added"
 - Imperative mood: "fix bug" not "fixes bug"
 - Reference issues: `Closes #123`, `Refs #456`

@@ -1,6 +1,7 @@
 # my-opencode-golang
 
 面向 Go 后端开发的 opencode 项目级配置，开箱即用。
+基于 [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC) 裁剪改造，仅保留 Go 后端开发所需的 agents、commands 和 skills。
 
 ## 功能
 

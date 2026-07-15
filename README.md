@@ -10,7 +10,7 @@
 |------|------|------|
 | Agents | 13 | build、planner、architect、code-reviewer、security-reviewer、tdd-guide、go-reviewer 等 |
 | Commands | 14 | /plan、/tdd、/code-review、/go-review、/go-test、/go-build 等 |
-| Skills | 8 | golang-patterns、backend-patterns、api-design、tdd-workflow、security-review 等 |
+| Skills | 9 | golang-patterns、backend-patterns、api-design、tdd-workflow、security-review 等 |
 
 ## 使用方式
 
@@ -32,7 +32,7 @@ opencode.json              # 根配置
 ├── commands/              # 14 个命令模板
 ├── prompts/agents/        # 12 个 agent prompt
 ├── instructions/          # Go 开发指令
-└── skills/                # 8 个精选技能
+└── skills/                # 9 个精选技能
 ```
 
 ## 可用 Agent

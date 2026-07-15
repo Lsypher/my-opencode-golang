@@ -1,5 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
+
+  // 主力模型 — 用于 build/primary agent 和复杂任务
+  "model": "opencode/mimo-v2-5-free",
+
+  // 轻量模型 — 用于 token 消耗大的简单任务（如 explore）
+  "small_model": "opencode/deepseek-v4-flash-free",
+
+  // 指令文件 — 每个会话自动加载，精简以节省上下文
   "instructions": [
     ".opencode/AGENTS.md",
     ".opencode/instructions/INSTRUCTIONS.md",
@@ -14,9 +22,11 @@
   ],
 
   "agent": {
+    // 主开发 agent — 日常编码工作
     "build": {
       "description": "Primary coding agent for development work",
       "mode": "primary",
+      "model": "opencode/mimo-v2-5-free",
       "tools": {
         "write": true,
         "edit": true,
@@ -25,9 +35,32 @@
         "changed-files": true
       }
     },
+
+    // 通用子 agent — 调研、分析、查资料，不直接写代码
+    "general": {
+      "description": "General-purpose agent for research, analysis, and information gathering",
+      "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+
+    // 探索子 agent — 代码库探索、文件搜索
+    // 用轻量模型节省 token，因为探索类任务 token 消耗大
+    "explore": {
+      "description": "Fast agent for codebase exploration and file searching",
+      "mode": "subagent",
+      "model": "opencode/deepseek-v4-flash-free"
+    },
+
     "planner": {
       "description": "Expert planning specialist for complex features and refactoring. Use for implementation planning, architectural changes, or complex refactoring.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/planner.txt}",
       "tools": {
         "read": true,
@@ -39,6 +72,7 @@
     "architect": {
       "description": "Software architecture specialist for system design, scalability, and technical decision-making.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/architect.txt}",
       "tools": {
         "read": true,
@@ -50,6 +84,7 @@
     "code-reviewer": {
       "description": "Expert code review specialist. Reviews code for quality, security, and maintainability. Use immediately after writing or modifying code.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/code-reviewer.txt}",
       "tools": {
         "read": true,
@@ -61,6 +96,7 @@
     "security-reviewer": {
       "description": "Security vulnerability detection and remediation specialist. Use after writing code that handles user input, authentication, API endpoints, or sensitive data.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/security-reviewer.txt}",
       "tools": {
         "read": true,
@@ -72,6 +108,7 @@
     "tdd-guide": {
       "description": "Test-Driven Development specialist enforcing write-tests-first methodology. Use when writing new features, fixing bugs, or refactoring code. Ensures 80%+ test coverage.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/tdd-guide.txt}",
       "tools": {
         "read": true,
@@ -83,6 +120,7 @@
     "build-error-resolver": {
       "description": "Build and compilation error resolution specialist. Use when build fails or compile errors occur. Fixes build/compile errors only with minimal diffs.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/build-error-resolver.txt}",
       "tools": {
         "read": true,
@@ -94,6 +132,7 @@
     "doc-updater": {
       "description": "Documentation and codemap specialist. Use for updating codemaps and documentation.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/doc-updater.txt}",
       "tools": {
         "read": true,
@@ -105,6 +144,7 @@
     "refactor-cleaner": {
       "description": "Dead code cleanup and consolidation specialist. Use for removing unused code, duplicates, and refactoring.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/refactor-cleaner.txt}",
       "tools": {
         "read": true,
@@ -116,6 +156,7 @@
     "go-reviewer": {
       "description": "Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/go-reviewer.txt}",
       "tools": {
         "read": true,
@@ -127,6 +168,7 @@
     "go-build-resolver": {
       "description": "Go build, vet, and compilation error resolution specialist. Fixes Go build errors with minimal changes.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/go-build-resolver.txt}",
       "tools": {
         "read": true,
@@ -138,6 +180,7 @@
     "docs-lookup": {
       "description": "Documentation specialist using Context7 MCP to fetch current library and API documentation with code examples.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/docs-lookup.txt}",
       "tools": {
         "read": true,
@@ -149,6 +192,7 @@
     "harness-optimizer": {
       "description": "Analyze and improve the local agent harness configuration for reliability, cost, and throughput.",
       "mode": "subagent",
+      "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/harness-optimizer.txt}",
       "tools": {
         "read": true,

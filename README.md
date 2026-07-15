@@ -4,22 +4,20 @@
 
 基于 [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC) 裁剪改造，仅保留 Go 后端开发所需的 agents、commands 和 skills。
 
-主配置文件 `opencode.json` 位于项目根目录，包含所有 agent、command、instruction 和 permission 定义。`.opencode/` 目录存放命令模板、agent prompt、技能文件和开发指令。
+主配置文件 `opencode.jsonc` 位于项目根目录（JSONC 格式支持注释）。
 
-## 功能
+## 功能统计
 
 | 类别 | 数量 | 说明 |
 |------|------|------|
-| Agents | 13 | build（primary）、planner、architect、code-reviewer、security-reviewer、tdd-guide、go-reviewer 等 |
-| Commands | 14 | /plan、/tdd、/code-review、/go-review、/go-test、/go-build、/verify、/checkpoint 等 |
-| Skills | 9 | golang-patterns、backend-patterns、api-design、tdd-workflow、security-review、git-commit 等 |
+| Agents | 15 | 1 primary + 14 subagent |
+| Commands | 14 | 斜杠命令 |
+| Skills | 9 | 自动加载的领域知识 |
 
 ## 使用方式
 
-将 `opencode.json` 和 `.opencode/` 复制到你的 Go 项目根目录，运行 `opencode` 即可：
-
 ```bash
-cp -r opencode.json .opencode/ /path/to/your-go-project/
+cp -r opencode.jsonc .opencode/ /path/to/your-go-project/
 cd /path/to/your-go-project
 opencode
 ```
@@ -27,43 +25,45 @@ opencode
 ## 项目结构
 
 ```
-opencode.json              # 主配置（agents/commands/skills/permissions）
+opencode.jsonc             # 主配置
 .opencode/
-├── AGENTS.md              # agent 使用说明
-├── commands/              # 14 个命令模板
-├── prompts/agents/        # 12 个 agent prompt
+├── AGENTS.md              # AI 行为指令
+├── commands/              # 命令模板
+├── prompts/agents/        # agent prompt
 ├── instructions/          # Go 开发指令
-└── skills/                # 9 个精选技能
-    ├── golang-patterns/      # Go 语言惯用模式与最佳实践
-    ├── backend-patterns/     # 后端架构模式与 API 设计
-    ├── api-design/           # REST API 设计规范
-    ├── coding-standards/     # 跨项目编码规范
-    ├── tdd-workflow/         # 测试驱动开发工作流
-    ├── security-review/      # 安全审查清单与模式
-    ├── strategic-compact/    # 上下文压缩策略
-    ├── verification-loop/    # 综合验证流程
-    └── git-commit/           # 规范化 Git 提交
+└── skills/                # 领域知识
 ```
 
-## 可用 Agent
+## 模型配置
 
-| Agent | 用途 |
-|-------|------|
-| build | 日常编码 |
-| planner | 实现计划 |
-| architect | 架构设计 |
-| code-reviewer | 代码审查 |
-| security-reviewer | 安全检查 |
-| tdd-guide | 测试驱动开发 |
-| build-error-resolver | 构建错误修复 |
-| refactor-cleaner | 死代码清理 |
-| doc-updater | 文档更新 |
-| docs-lookup | API 文档查询 |
-| harness-optimizer | 配置优化 |
-| go-reviewer | Go 代码审查 |
-| go-build-resolver | Go 构建修复 |
+| 角色 | 模型 | 用途 |
+|------|------|------|
+| 主力模型 | `opencode/mimo-v2-5-free` | 主力 agent |
+| 轻量模型 | `opencode/deepseek-v4-flash-free` | explore agent |
 
-## 可用命令
+两者均为 OpenCode 免费模型。
+
+## Agent 一览
+
+| Agent | 用途 | 模型 |
+|-------|------|------|
+| build | 日常编码（primary） | 主力模型 |
+| general | 调研分析、查资料（只读） | 主力模型 |
+| explore | 代码库探索、文件搜索 | 轻量模型 |
+| planner | 实现计划 | 主力模型 |
+| architect | 架构设计 | 主力模型 |
+| code-reviewer | 代码审查 | 主力模型 |
+| security-reviewer | 安全检查 | 主力模型 |
+| tdd-guide | 测试驱动开发 | 主力模型 |
+| build-error-resolver | 构建错误修复 | 主力模型 |
+| refactor-cleaner | 死代码清理 | 主力模型 |
+| doc-updater | 文档更新 | 主力模型 |
+| docs-lookup | API 文档查询 | 主力模型 |
+| harness-optimizer | 配置优化 | 主力模型 |
+| go-reviewer | Go 代码审查 | 主力模型 |
+| go-build-resolver | Go 构建修复 | 主力模型 |
+
+## 命令一览
 
 | 命令 | 说明 |
 |------|------|
@@ -82,6 +82,10 @@ opencode.json              # 主配置（agents/commands/skills/permissions）
 | `/verify` | 验证循环 |
 | `/checkpoint` | 保存进度 |
 
-## 无外部依赖
+## 模型切换说明
 
-纯配置文件，不需要 npm、Node.js 或其他运行时依赖。
+OpenCode TUI 中切换模型（`/models` → 选择模型）**仅影响 primary agent（build）**，build 模式和 plan 模式共用 primary agent，因此两者都会被 TUI 切换覆盖。
+
+所有 subagent（planner、explore、code-reviewer 等）不受 TUI 切换影响，始终使用 `opencode.jsonc` 中显式指定的 `model`。
+
+根据实际开发需求和预算，可自行编辑 `opencode.jsonc` 调整每个 agent 使用的模型。例如为 explore 更换其他免费或付费模型，或为特定 agent 指定更高性能的模型。

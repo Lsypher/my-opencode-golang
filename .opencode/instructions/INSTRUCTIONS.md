@@ -145,10 +145,26 @@ go test -coverprofile=c.out ./... && go tool cover -html=c.out  # 覆盖率报�
 4. **Security** — 敏感代码变更后 /security
 5. **Commit** — 遵循 conventional commits 格式
 
+## Agent Orchestration
+
+| Trigger | Agent | When |
+|---------|-------|------|
+| Complex feature / refactoring | planner | Create implementation plan first |
+| Code just modified | code-reviewer / go-reviewer | Review quality and maintainability |
+| Bug fix / new feature | tdd-guide / go-test | TDD workflow with 80%+ coverage |
+| Architectural decision | architect | System design and scalability |
+| Security-sensitive code | security-reviewer | Vulnerability detection |
+| Go build errors | go-build-resolver | Fix compilation errors |
+| Config tuning | harness-optimizer | Reliability, cost, throughput |
+
+Run independent operations in parallel — launch multiple agents simultaneously.
+
 ## 可用 Agent
 
 | Agent | 用途 |
 |-------|------|
+| general | 调研分析、查资料 |
+| explore | 代码库探索、文件搜索 |
 | planner | 实现计划 |
 | architect | 架构设计 |
 | tdd-guide | 测试驱动开发 |

@@ -84,7 +84,7 @@
     "code-reviewer": {
       "description": "Expert code review specialist. Reviews code for quality, security, and maintainability. Use immediately after writing or modifying code.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/code-reviewer.txt}",
       "tools": {
         "read": true,
@@ -96,7 +96,7 @@
     "security-reviewer": {
       "description": "Security vulnerability detection and remediation specialist. Use after writing code that handles user input, authentication, API endpoints, or sensitive data.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/security-reviewer.txt}",
       "tools": {
         "read": true,
@@ -108,7 +108,7 @@
     "tdd-guide": {
       "description": "Test-Driven Development specialist enforcing write-tests-first methodology. Use when writing new features, fixing bugs, or refactoring code. Ensures 80%+ test coverage.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/tdd-guide.txt}",
       "tools": {
         "read": true,
@@ -120,7 +120,7 @@
     "build-error-resolver": {
       "description": "Build and compilation error resolution specialist. Use when build fails or compile errors occur. Fixes build/compile errors only with minimal diffs.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/build-error-resolver.txt}",
       "tools": {
         "read": true,
@@ -132,7 +132,7 @@
     "doc-updater": {
       "description": "Documentation and codemap specialist. Use for updating codemaps and documentation.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/big-pickle",
       "prompt": "{file:.opencode/prompts/agents/doc-updater.txt}",
       "tools": {
         "read": true,
@@ -144,7 +144,7 @@
     "refactor-cleaner": {
       "description": "Dead code cleanup and consolidation specialist. Use for removing unused code, duplicates, and refactoring.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/refactor-cleaner.txt}",
       "tools": {
         "read": true,
@@ -156,7 +156,7 @@
     "go-reviewer": {
       "description": "Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/go-reviewer.txt}",
       "tools": {
         "read": true,
@@ -168,7 +168,7 @@
     "go-build-resolver": {
       "description": "Go build, vet, and compilation error resolution specialist. Fixes Go build errors with minimal changes.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/go-build-resolver.txt}",
       "tools": {
         "read": true,
@@ -180,7 +180,7 @@
     "docs-lookup": {
       "description": "Documentation specialist using Context7 MCP to fetch current library and API documentation with code examples.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/big-pickle",
       "prompt": "{file:.opencode/prompts/agents/docs-lookup.txt}",
       "tools": {
         "read": true,
@@ -192,7 +192,7 @@
     "harness-optimizer": {
       "description": "Analyze and improve the local agent harness configuration for reliability, cost, and throughput.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/harness-optimizer.txt}",
       "tools": {
         "read": true,

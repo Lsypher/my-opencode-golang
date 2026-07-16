@@ -41,9 +41,10 @@ opencode.jsonc             # 主配置
 | 角色 | 模型 | 用途 |
 |------|------|------|
 | 主力模型 | `opencode/mimo-v2-5-free` | 主力 agent |
-| 轻量模型 | `opencode/deepseek-v4-flash-free` | explore agent |
+| 轻量模型 | `opencode/deepseek-v4-flash-free` | 大部分 subagent |
+| 文档模型 | `opencode/big-pickle` | doc-updater、docs-lookup |
 
-两者均为 OpenCode 免费模型。
+三者均为 OpenCode 免费模型。
 
 ## Agent 一览
 
@@ -54,16 +55,16 @@ opencode.jsonc             # 主配置
 | explore | 代码库探索、文件搜索 | 轻量模型 |
 | planner | 实现计划 | 主力模型 |
 | architect | 架构设计 | 主力模型 |
-| code-reviewer | 代码审查 | 主力模型 |
-| security-reviewer | 安全检查 | 主力模型 |
-| tdd-guide | 测试驱动开发 | 主力模型 |
-| build-error-resolver | 构建错误修复 | 主力模型 |
-| refactor-cleaner | 死代码清理 | 主力模型 |
-| doc-updater | 文档更新 | 主力模型 |
-| docs-lookup | API 文档查询 | 主力模型 |
-| harness-optimizer | 配置优化 | 主力模型 |
-| go-reviewer | Go 代码审查 | 主力模型 |
-| go-build-resolver | Go 构建修复 | 主力模型 |
+| code-reviewer | 代码审查 | 轻量模型 |
+| security-reviewer | 安全检查 | 轻量模型 |
+| tdd-guide | 测试驱动开发 | 轻量模型 |
+| build-error-resolver | 构建错误修复 | 轻量模型 |
+| refactor-cleaner | 死代码清理 | 轻量模型 |
+| doc-updater | 文档更新 | 文档模型 |
+| docs-lookup | API 文档查询 | 文档模型 |
+| harness-optimizer | 配置优化 | 轻量模型 |
+| go-reviewer | Go 代码审查 | 轻量模型 |
+| go-build-resolver | Go 构建修复 | 轻量模型 |
 
 ## 命令一览
 

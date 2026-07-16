@@ -18,7 +18,8 @@
     ".opencode/skills/tdd-workflow/SKILL.md",
     ".opencode/skills/security-review/SKILL.md",
     ".opencode/skills/strategic-compact/SKILL.md",
-    ".opencode/skills/verification-loop/SKILL.md"
+    ".opencode/skills/verification-loop/SKILL.md",
+    ".opencode/skills/git-commit/SKILL.md"
   ],
 
   "agent": {

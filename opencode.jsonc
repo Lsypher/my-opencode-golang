@@ -27,12 +27,12 @@
       "description": "Primary coding agent for development work",
       "mode": "primary",
       "model": "opencode/mimo-v2-5-free",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true,
-        "read": true,
-        "changed-files": true
+      "permission": {
+        "read": "allow",
+        "edit": "allow",
+        "bash": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
 
@@ -41,11 +41,12 @@
       "description": "General-purpose agent for research, analysis, and information gathering",
       "mode": "subagent",
       "model": "opencode/mimo-v2-5-free",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": false,
-        "edit": false
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
 
@@ -62,11 +63,12 @@
       "mode": "subagent",
       "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/planner.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": false,
-        "edit": false
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "architect": {
@@ -74,11 +76,12 @@
       "mode": "subagent",
       "model": "opencode/mimo-v2-5-free",
       "prompt": "{file:.opencode/prompts/agents/architect.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": false,
-        "edit": false
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "code-reviewer": {
@@ -86,11 +89,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/code-reviewer.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": false,
-        "edit": false
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "security-reviewer": {
@@ -98,11 +102,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/security-reviewer.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": true,
-        "edit": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "tdd-guide": {
@@ -110,11 +115,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/tdd-guide.txt}",
-      "tools": {
-        "read": true,
-        "write": true,
-        "edit": true,
-        "bash": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "build-error-resolver": {
@@ -122,11 +128,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/build-error-resolver.txt}",
-      "tools": {
-        "read": true,
-        "write": true,
-        "edit": true,
-        "bash": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "doc-updater": {
@@ -134,11 +141,12 @@
       "mode": "subagent",
       "model": "opencode/big-pickle",
       "prompt": "{file:.opencode/prompts/agents/doc-updater.txt}",
-      "tools": {
-        "read": true,
-        "write": true,
-        "edit": true,
-        "bash": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "refactor-cleaner": {
@@ -146,11 +154,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/refactor-cleaner.txt}",
-      "tools": {
-        "read": true,
-        "write": true,
-        "edit": true,
-        "bash": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "go-reviewer": {
@@ -158,11 +167,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/go-reviewer.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": false,
-        "edit": false
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "go-build-resolver": {
@@ -170,11 +180,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/go-build-resolver.txt}",
-      "tools": {
-        "read": true,
-        "write": true,
-        "edit": true,
-        "bash": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "docs-lookup": {
@@ -182,11 +193,12 @@
       "mode": "subagent",
       "model": "opencode/big-pickle",
       "prompt": "{file:.opencode/prompts/agents/docs-lookup.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "write": false,
-        "edit": false
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "glob": "allow",
+        "grep": "allow"
       }
     },
     "harness-optimizer": {
@@ -194,10 +206,12 @@
       "mode": "subagent",
       "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:.opencode/prompts/agents/harness-optimizer.txt}",
-      "tools": {
-        "read": true,
-        "bash": true,
-        "edit": true
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "allow",
+        "glob": "allow",
+        "grep": "allow"
       }
     }
   },
@@ -284,6 +298,11 @@
     }
   },
   "permission": {
+    "read": "allow",
+    "edit": "allow",
+    "bash": "allow",
+    "glob": "allow",
+    "grep": "allow",
     "mcp_*": "ask"
   }
 }

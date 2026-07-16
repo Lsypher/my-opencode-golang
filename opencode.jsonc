@@ -27,7 +27,7 @@
     "build": {
       "description": "Primary coding agent for development work",
       "mode": "primary",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/mimo-v2.5-free",
       "permission": {
         "read": "allow",
         "edit": "allow",
@@ -41,7 +41,7 @@
     "general": {
       "description": "General-purpose agent for research, analysis, and information gathering",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/mimo-v2.5-free",
       "permission": {
         "read": "allow",
         "bash": "allow",
@@ -62,7 +62,7 @@
     "planner": {
       "description": "Expert planning specialist for complex features and refactoring. Use for implementation planning, architectural changes, or complex refactoring.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:.opencode/prompts/agents/planner.txt}",
       "permission": {
         "read": "allow",
@@ -75,7 +75,7 @@
     "architect": {
       "description": "Software architecture specialist for system design, scalability, and technical decision-making.",
       "mode": "subagent",
-      "model": "opencode/mimo-v2-5-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:.opencode/prompts/agents/architect.txt}",
       "permission": {
         "read": "allow",

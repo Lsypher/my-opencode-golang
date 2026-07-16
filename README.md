@@ -40,7 +40,7 @@ opencode.jsonc             # 主配置
 
 | 角色 | 模型 | 用途 |
 |------|------|------|
-| 主力模型 | `opencode/mimo-v2-5-free` | 主力 agent |
+| 主力模型 | `opencode/mimo-v2.5-free` | 主力 agent |
 | 轻量模型 | `opencode/deepseek-v4-flash-free` | 大部分 subagent |
 | 文档模型 | `opencode/big-pickle` | doc-updater、docs-lookup |
 

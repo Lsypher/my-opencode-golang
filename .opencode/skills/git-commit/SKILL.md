@@ -1,6 +1,6 @@
 ---
 name: git-commit
-description: 'Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Use when user asks to commit changes, create a git commit, or mentions "/commit". Supports: (1) Auto-detecting type and scope from changes, (2) Generating conventional commit messages from diff, (3) Interactive commit with optional type/scope/description overrides, (4) Intelligent file staging for logical grouping'
+description: '执行 git commit，支持 conventional commit 分析、智能暂存和消息生成。用户要求提交、commit、或提及 "/commit" 时使用。功能：(1) 自动检测 type 和 scope，(2) 从 diff 生成 conventional commit 消息，(3) 支持 type/scope/description 覆盖，(4) 智能文件暂存分组'
 license: MIT
 allowed-tools: Bash
 ---

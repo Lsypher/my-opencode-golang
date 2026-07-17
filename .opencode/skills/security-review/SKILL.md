@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.
+description: 添加认证、处理用户输入、操作密钥、创建 API 端点或实现支付/敏感功能时使用。提供完整安全检查清单和模式。
 metadata:
   origin: opencode
 ---

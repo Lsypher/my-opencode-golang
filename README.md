@@ -4,7 +4,7 @@
 
 > **注意：本仓库是纯配置项目，不含 Go 源代码。** 请将配置复制到你自己的 Go 项目中使用。本配置面向个人开发，非团队协作场景。
 
-基于 [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC) 裁剪改造，仅保留 Go 后端开发所需的 agents、commands 和 skills。
+基于 [ECC (Everything Claude Code)](https://github.com/affaan-m/ECC) 的 opencode 配置裁剪定制、改进优化，专注 Go 后端开发。
 
 主配置文件 `opencode.jsonc` 位于项目根目录（JSONC 格式支持注释）。
 

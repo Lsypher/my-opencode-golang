@@ -10,16 +10,7 @@
   // 指令文件 — 每个会话自动加载，精简以节省上下文
   "instructions": [
     ".opencode/AGENTS.md",
-    ".opencode/instructions/INSTRUCTIONS.md",
-    ".opencode/skills/golang-patterns/SKILL.md",
-    ".opencode/skills/backend-patterns/SKILL.md",
-    ".opencode/skills/api-design/SKILL.md",
-    ".opencode/skills/coding-standards/SKILL.md",
-    ".opencode/skills/tdd-workflow/SKILL.md",
-    ".opencode/skills/security-review/SKILL.md",
-    ".opencode/skills/strategic-compact/SKILL.md",
-    ".opencode/skills/verification-loop/SKILL.md",
-    ".opencode/skills/git-commit/SKILL.md"
+    ".opencode/instructions/INSTRUCTIONS.md"
   ],
 
   "agent": {
@@ -299,11 +290,31 @@
     }
   },
   "permission": {
-    "read": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.local": "deny",
+      "*.env.development.local": "deny",
+      "*.env.test.local": "deny",
+      "*.env.production.local": "deny",
+      "*.env.example": "allow"
+    },
     "edit": "allow",
-    "bash": "allow",
-    "glob": "allow",
-    "grep": "allow",
+    "bash": {
+      "*": "allow",
+      "rm -rf*": "ask",
+      "rm -fr*": "ask",
+      "rm -rf *": "ask",
+      "rm -fr *": "ask",
+      "Remove-Item -Recurse -Force*": "ask",
+      "git push --force*": "ask",
+      "git push -f *": "ask",
+      "git reset --hard*": "ask",
+      "git branch -D*": "ask",
+      "git stash clear*": "ask",
+      "git stash drop*": "ask"
+    },
+    "external_directory": "ask",
     "mcp_*": "ask"
   }
 }
